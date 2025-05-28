@@ -1,5 +1,7 @@
 - name: Executar script PowerShell local
   hosts: windows
+  vars:
+    tenant: "{{ tenant_input }}"  # Essa variável será fornecida ao iniciar o job
   tasks:
 
     - name: Garantir que a pasta 'scriptverif' existe na área de trabalho
@@ -17,6 +19,6 @@
         src: ./principalverif.ps1
         dest: '{{ ansible_env.USERPROFILE }}\Desktop\scriptverif\principalverif.ps1'
 
-    - name: Executar script PowerShell
+    - name: Executar script PowerShell com tenant
       ansible.windows.win_shell: >
-        powershell.exe -ExecutionPolicy Bypass -File "{{ ansible_env.USERPROFILE }}\Desktop\scriptverif\principalverif.ps1"
+        powershell.exe -ExecutionPolicy Bypass -File "{{ ansible_env.USERPROFILE }}\Desktop\scriptverif\principalverif.ps1" -Tenant "{{ tenant }}"
