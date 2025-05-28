@@ -1,4 +1,9 @@
-﻿# ================================
+param(
+    [string]$tenant
+)
+
+
+# ================================
 # Carregar e importar módulos mínimos do Microsoft Graph e outros
 # ================================
 
@@ -87,7 +92,7 @@ try {
 # Entrada do usuário
 # ================================
 
-$tenant = Read-Host "Digite o nome do seu tenant (sem '.onmicrosoft.com')"
+Write-Host "Tenant recebido: $tenant"
 
 # ================================
 # Inicialização dos relatórios
