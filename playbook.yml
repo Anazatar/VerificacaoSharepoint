@@ -21,4 +21,4 @@
 
     - name: Executar script PowerShell com tenant
       ansible.windows.win_shell: >
-        powershell.exe -ExecutionPolicy Bypass -File "{{ ansible_env.USERPROFILE }}\Desktop\scriptverif\principalverif.ps1" -Tenant "{{ tenant }}"
+        powershell.exe -ExecutionPolicy Bypass -File "{{ ansible_env.USERPROFILE }}\Desktop\scriptverif\principalverif.ps1" -tenant "{{ tenant }}"
