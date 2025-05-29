@@ -58,7 +58,7 @@ if (-not (Test-Path $moduloPath)) {
 
 try {
     $content = Get-Content $moduloPath -Raw
-    Set-Content -Path $moduloPath -Value $content -Encoding UTF8
+    Set-Content -Path $moduloPath -Value $content -Encoding UTF8BOM
     Write-Host "Codificação UTF-8 garantida para o módulo local." -ForegroundColor Green
 } catch {
     Write-Host "Erro ao forçar UTF-8: $($_.Exception.Message)" -ForegroundColor Red
@@ -187,7 +187,7 @@ $corpoAplicaveis = $relatorioLimitacoesAplicaveis | ConvertTo-Html -Fragment -Pr
 $corpoNaoAplicaveis = $relatorioLimitacoesNaoAplicaveis | ConvertTo-Html -Fragment -PreContent "</div><div class='section'><h2>Limitações Não Aplicáveis</h2>"
 
 $paginaCompleta = "$header$corpoAplicaveis$corpoNaoAplicaveis</div>$footer"
-$paginaCompleta | Out-File -FilePath $saidaHTML -Encoding UTF8
+$paginaCompleta | Out-File -FilePath $saidaHTML -Encoding UTF8BOM
 
 Write-Host "Relatório HTML gerado em: $saidaHTML" -ForegroundColor Cyan
 
